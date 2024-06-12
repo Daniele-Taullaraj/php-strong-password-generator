@@ -1,9 +1,13 @@
 <?php
 $inputLength=$_GET["inputLength"];
 $password = "";
+$allowedChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-_';
+
 
 for ($i = 0; $i < $inputLength; $i++) {
-    $password .= "X";
+    $randomNumber = rand(0, (strlen($allowedChars)-1));
+    $randomChars = $allowedChars[$randomNumber];
+    $password .= $randomChars;
 }
 
 ?>
@@ -15,7 +19,7 @@ for ($i = 0; $i < $inputLength; $i++) {
 </head>
 <body>
     <h1><?php
-    echo "la password deve essere lungha ". $inputLength ." caratteri";
+    echo "la password deve essere lungha ". $inputLength ." caratteri".(strlen($allowedChars)-1);
     ?></h1>
     <h1><?php
     echo "la password è: ". $password ;
